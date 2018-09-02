@@ -1,41 +1,61 @@
-function getRandomNumber(maxNumber){
-  const randomNumber = Math.floor(Math.random() * Math.floor(maxNumber));
-  return randomNumber;
+const STUDENTS = [
+  'Yetkin',
+  'Daniel',
+  'Tony G',
+  'Matt',
+  'Zuber',
+  'Kate',
+  'Jamal',
+  'Mel',
+  'Tom',
+  'Luke Sikuade',
+  'Phil',
+  'Tony B',
+  'Chris',
+  'Luke Speirs',
+  'Nicola',
+  'David',
+  'Yelena',
+  'Joe',
+  'Roland'
+  //'Mariusz'
+];
+
+const GROUP_SIZE = 2;
+
+
+// returns a random number between 0 and limit
+function getRandomNumber(limit){
+  let random = Math.floor(Math.random());
+  return random;
 }
 
-function getCompanyName(index){
-  const companies = [ 'Google', 'Facebook', 'Amazon', 'Apple', 'Microsoft'];
+// takes an array of names and returns a shuffled array of names
+function shuffle(names){
+  const output = [];
 
-  return companies[index];
-}
-
-function getCompany(index){
-  if(!index){
-    index = getRandomNumber(4);
+  while(names.length > 0){
+    const randomNumber = getRandomNumber(names.length);
+    const randomNameInArray = names.splice(randomNumber, 1)
+    const randomName = randomNameInArray;
+    output.push(randomName);
   }
 
-  const company = getCompanyName(index);
-
-  return company;
+  return output;
 }
 
-function letsGetDebugging( list ){
-  let company;
-  for(let i = 0; i < 10; i++){
-    if(i % 3 === 0){
-      company = getRandomNumber(i);
-    } else if(i < 5){
-      company = getCompany(i);
-    } else {
-      company = getCompany();
-    }
+// takes an array of names and groups them into arrays of length size
+function group(names, size){
+  const output = [];
 
-    list.push( company );
+  while(names.length > 0){
+    const group = names.splice(0, 3);
+    output.push(group);
   }
 
-  return list;
+  return output;
 }
 
-debugger;
-const output = letsGetDebugging([]);
-debugger;
+const randomNames = shuffle(STUDENTS);
+const randomGroups = group(randomNames, GROUP_SIZE);
+console.log(randomGroups)
