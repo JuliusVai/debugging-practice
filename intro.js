@@ -1,19 +1,10 @@
-const start = 10;
-const end = 15;
+const name = localStorage.getItem('name');
 
-for(let i = start; i < end; i++){
-  console.log(i);
+if(name){
+  alert(`you name is ${name}`);
 }
 
-function sayWorld(){
-  console.log("World");
-}
 
-function sayHello(){
-  console.log("Hello");
-  sayWorld();
-}
+const input = prompt("please enter your name");
 
-sayHello();
-
-const x = 27;
+localStorage.setItem('name', input);

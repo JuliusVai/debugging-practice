@@ -17,8 +17,8 @@ const STUDENTS = [
   'David',
   'Yelena',
   'Joe',
-  'Roland'
-  //'Mariusz'
+  'Roland',
+  'Mariusz'
 ];
 
 const GROUP_SIZE = 2;
@@ -26,7 +26,7 @@ const GROUP_SIZE = 2;
 
 // returns a random number between 0 and limit
 function getRandomNumber(limit){
-  let random = Math.floor(Math.random());
+  const random = Math.floor(Math.random() * limit);
   return random;
 }
 
@@ -37,7 +37,7 @@ function shuffle(names){
   while(names.length > 0){
     const randomNumber = getRandomNumber(names.length);
     const randomNameInArray = names.splice(randomNumber, 1)
-    const randomName = randomNameInArray;
+    const randomName = randomNameInArray[0];
     output.push(randomName);
   }
 
@@ -49,7 +49,7 @@ function group(names, size){
   const output = [];
 
   while(names.length > 0){
-    const group = names.splice(0, 3);
+    const group = names.splice(0, size);
     output.push(group);
   }
 
